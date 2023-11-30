@@ -1,0 +1,19 @@
+# EditorConfig is awesome: https://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space # 缩进风格为 空格
+indent_size = 2 # 缩进为2个空格
+end_of_line = lf # 换行符为 lf
+trim_trailing_whitespace = true # 去除行尾空格
+insert_final_newline = true # 在文件末尾插入一个空行
+
+[*.md]
+indent_style = tab
+tab_width = 4
