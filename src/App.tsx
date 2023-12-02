@@ -4,6 +4,7 @@ import routes from '@/router'
 // import { useSelector } from 'react-redux'
 import { useAppSelector, useAppDispatch } from '@/store'
 import { increment } from './store/modules/counter'
+
 function App() {
   const { count } = useAppSelector((state) => ({
     count: state.counter.count
