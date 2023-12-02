@@ -15,16 +15,24 @@ const Playlist = lazy(() => import('@/views/discover/c-views/playlist'))
 const Djradio = lazy(() => import('@/views/discover/c-views/djradio'))
 const Artist = lazy(() => import('@/views/discover/c-views/artist'))
 const Album = lazy(() => import('@/views/discover/c-views/album'))
-
+const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
 const router: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/discover" replace={true} />
+    element: <Navigate to="/discover" />
   },
   {
     path: '/discover',
     element: <Discover />,
     children: [
+      {
+        path: '/discover',
+        element: <Navigate to="/discover/recommend" />
+      },
+      {
+        path: '/discover/recommend',
+        element: <Recommend />
+      },
       {
         path: '/discover/toplist',
         element: <Toplist />

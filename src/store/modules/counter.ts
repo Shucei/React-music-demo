@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const counterReducer = createSlice({
   name: 'counter',
@@ -6,7 +6,7 @@ const counterReducer = createSlice({
     count: 0
   },
   reducers: {
-    increment(state, { payload }) {
+    increment(state, { payload }: PayloadAction<number>) {
       state.count += payload
     }
   }
