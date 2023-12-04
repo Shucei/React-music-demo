@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react'
 import { useAppDispatch } from '@/store'
 import Banner from './components/banner'
-import { getTopBannerAction } from './store'
+import { getTopBannerAction, fetchHotRecommend } from './store'
 import { RecommendWrapper } from './style'
 import HotRecommend from './components/hot/'
 interface Props {
@@ -12,6 +12,7 @@ const Recommend: React.FC = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(getTopBannerAction())
+    dispatch(fetchHotRecommend())
   }, [])
 
   return (

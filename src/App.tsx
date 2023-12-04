@@ -5,7 +5,6 @@ import Header from '@/components/app-header'
 import Footer from '@/components/app-footer'
 // import { useSelector } from 'react-redux'
 // import { useAppSelector, useAppDispatch } from '@/store'
-// import { increment } from './store/modules/counter'
 
 function App() {
   return (
