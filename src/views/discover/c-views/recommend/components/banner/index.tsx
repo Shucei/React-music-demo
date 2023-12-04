@@ -5,6 +5,7 @@ import { shallowEqual } from 'react-redux'
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
 import { Carousel } from 'antd'
 import classNames from 'classnames'
+// import { SwitchTransition, CSSTransition } from 'react-transition-group'
 interface Props {
   children?: React.ReactNode
 }
@@ -32,6 +33,9 @@ const Banner: React.FC = () => {
   function handleAfterChange(current: number) {
     setCurrentIndex(current)
   }
+  function bannerImagChange(index: number) {
+    bannerRef.current?.goTo(index, false)
+  }
 
   /** 获取背景图片 */
   let bgImageUrl
@@ -47,12 +51,28 @@ const Banner: React.FC = () => {
     >
       <div className="banner wrap-v2">
         <BannerLeft>
+          {/* <div className="banner-list">
+            <SwitchTransition mode="out-in">
+              <CSSTransition
+                classNames="fade"
+                timeout={1000}
+                key={currentIndex}
+                onExited={() => handleAfterChange()}
+              >
+                <div className="banner-item">
+                  <img className="image" src={imageUrl} />
+                </div>
+              </CSSTransition>
+            </SwitchTransition>
+          </div> */}
           <Carousel
             autoplay
-            autoplaySpeed={1500}
+            autoplaySpeed={2000}
+            fade={true}
             ref={bannerRef}
             beforeChange={handleBeforeChange}
             afterChange={handleAfterChange}
+            dots={false}
           >
             {topBanners.map((item) => {
               return (
@@ -62,6 +82,24 @@ const Banner: React.FC = () => {
               )
             })}
           </Carousel>
+          <ul className="dots">
+            {topBanners.map((item, index) => {
+              return (
+                <li
+                  key={item.imageUrl}
+                  onClick={() => {
+                    bannerImagChange(index)
+                  }}
+                >
+                  <span
+                    className={classNames('item', {
+                      active: index === currentIndex
+                    })}
+                  ></span>
+                </li>
+              )
+            })}
+          </ul>
         </BannerLeft>
         <BannerRight></BannerRight>
         <BannerControl>
